@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import './App.css';
 
 function App() {
 
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState('GreatStack');
+  const inputElem = useRef();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setCount(count => count + 1);
-    }, 2000)
-  }, [count, name])
+  const btnClicked = () => {
+    console.log(inputElem);
+    inputElem.current.style.background = "blue";
+  }
 
   return (
-    <div className="App">
-      <h1>I have rendered {count} times!</h1>
-    </div>
+    <>
+      <input type='text' ref={inputElem} />
+      <button onClick={btnClicked}>Click Here</button>
+    </>
   );
 }
 
